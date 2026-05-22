@@ -1,0 +1,6 @@
+{
+  "name": "LeetCode Study Companion",
+  "description": "Web học lập trình cá nhân, cho phép import file bài tập LeetCode, tự động lên lộ trình ôn luyện, coding playground và theo dõi tiến độ hàng ngày với sự trợ giúp của AI Mentor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
