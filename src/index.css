@@ -5,45 +5,99 @@
   --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
-  --color-brand-neon: #CCFF00;
-  --color-brand-bg: #0A0A0A;
-  --color-brand-panel: #0D0D0D;
-  --color-brand-dark: #111111;
-  --color-brand-border: #222222;
-  --color-brand-border-light: #333333;
+  --color-brand-neon: var(--color-brand-neon-val);
+  --color-brand-bg: var(--color-brand-bg-val);
+  --color-brand-panel: var(--color-brand-panel-val);
+  --color-brand-dark: var(--color-brand-dark-val);
+  --color-brand-border: var(--color-brand-border-val);
+  --color-brand-border-light: var(--color-brand-border-light-val);
+  --color-brand-text: var(--color-brand-text-val);
+  --color-brand-text-muted: var(--color-brand-text-muted-val);
+  
+  --color-brand-code-bg: var(--color-brand-code-bg-val);
+  --color-brand-code-num-bg: var(--color-brand-code-num-bg-val);
+  --color-brand-neon-text: var(--color-brand-neon-text-val);
+  
+  --animate-fade-in: fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-up: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Custom global styles for the Brutalist look */
+:root {
+  --color-brand-neon-val: #CCFF00;
+  --color-brand-bg-val: #0A0A0A;
+  --color-brand-panel-val: #0D0D0D;
+  --color-brand-dark-val: #111111;
+  --color-brand-border-val: #222222;
+  --color-brand-border-light-val: #333333;
+  --color-brand-text-val: #E0E0E0;
+  --color-brand-text-muted-val: #9A9A9A;
+  --color-brand-code-bg-val: #050505;
+  --color-brand-code-num-bg-val: #0A0A0A;
+  --color-brand-neon-text-val: #000000;
+}
+
+html.light {
+  --color-brand-neon-val: #09090B; /* Stark brutalist deep-black as light-mode primary toggle */
+  --color-brand-bg-val: #F4F4F5; /* Soft modern concrete light-gray backdrop */
+  --color-brand-panel-val: #FFFFFF; /* Brilliant gleaming clean card/panel backdrop */
+  --color-brand-dark-val: #E4E4E7; /* Light header elements */
+  --color-brand-border-val: #A1A1AA; /* Strong defined borders for high-readability layout */
+  --color-brand-border-light-val: #D4D4D8; /* Light divider separator lines */
+  --color-brand-text-val: #09090B; /* Crisp pitch charcoal main headers & body */
+  --color-brand-text-muted-val: #52525B; /* Very readable neutral body gray */
+  --color-brand-code-bg-val: #FAF9F6; /* Warm elegant coding backdrop (soft vintage cream/white) */
+  --color-brand-code-num-bg-val: #E4E4E7; /* Light line number sidebar column */
+  --color-brand-neon-text-val: #FFFFFF; /* High-contrast white text on stark black action frames */
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Class transitions for ultra premium smooth theme swapping */
+html {
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom global styles for the modern high-end look */
 html, body, #root {
-  background-color: #0A0A0A;
-  color: #E0E0E0;
+  background-color: var(--color-brand-bg-val);
+  color: var(--color-brand-text-val);
   height: 100%;
   margin: 0;
   font-family: 'Space Grotesk', system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
-/* Custom scrollbars */
+/* Text selections matching active theme styling */
+::selection {
+  background-color: var(--color-brand-neon-val);
+  color: var(--color-brand-neon-text-val);
+}
+
+/* Custom scrollbars that adapt perfectly to dark vs light */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
-  border-left: 1px solid #222222;
+  background: var(--color-brand-bg-val);
+  border-left: 1px solid var(--color-brand-border-val);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: var(--color-brand-border-val);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #CCFF00;
+  background: var(--color-brand-neon-val);
 }
 
-/* Highlight selections in neon */
-::selection {
-  background-color: #CCFF00;
-  color: #000000;
-}

@@ -44,14 +44,14 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
   return (
     <div className="space-y-6 animate-fade-in" id="problem-list-container">
       {/* Search and Filters Header */}
-      <div className="bg-brand-panel border border-brand-border p-6 shadow-[3px_3px_0_#000] space-y-4">
+      <div className="bg-brand-panel border border-brand-border p-6 shadow-[3px_3px_0_var(--color-brand-border-val)] space-y-4">
         <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
           <div>
-            <h2 className="text-sm font-black text-white flex items-center gap-2 uppercase tracking-wider">
+            <h2 className="text-sm font-black text-brand-text flex items-center gap-2 uppercase tracking-wider">
               <BookOpen className="w-5 h-5 text-brand-neon" />
               Thư Viện Bài Lập Trình ({problems.length} Bài)
             </h2>
-            <p className="text-[10px] text-zinc-500 uppercase font-mono tracking-tight mt-1">// Quản lý, tìm lọc bộ đề & nạp thêm cấu trúc bên ngoài.</p>
+            <p className="text-[10px] text-brand-text-muted uppercase font-mono tracking-tight mt-1">// Quản lý, tìm lọc bộ đề & nạp thêm cấu trúc bên ngoài.</p>
           </div>
           
           <div className="flex gap-2 shrink-0">
@@ -60,7 +60,7 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
               className={`px-4 py-2.5 text-[10px] font-black uppercase tracking-wider border rounded-none flex items-center gap-1.5 transition-all cursor-pointer ${
                 showImporter 
                   ? 'bg-brand-dark text-brand-neon border-brand-neon' 
-                  : 'bg-brand-neon text-black border-brand-neon hover:bg-white'
+                  : 'bg-brand-neon text-brand-neon-text border-brand-neon hover:bg-brand-text hover:text-brand-panel'
               }`}
             >
               <PlusCircle className="w-4 h-4" />
@@ -105,7 +105,7 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
 
         {/* Collapsible Importer Panel */}
         {showImporter && (
-          <div className="border border-dashed border-brand-neon bg-[#CCFF00]/5 rounded-none p-4.5">
+          <div className="border border-dashed border-brand-neon bg-brand-neon/5 rounded-none p-4.5">
             <ImportPanel 
               onImportComplete={(probs) => {
                 onImportComplete(probs);
@@ -126,7 +126,7 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
               placeholder="Gõ mã số hoặc tên bài..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full text-xs pl-10 pr-8 py-2.5 rounded-none border border-brand-border focus:outline-none focus:border-brand-neon bg-brand-dark text-white placeholder-zinc-500 font-mono"
+              className="w-full text-xs pl-10 pr-8 py-2.5 rounded-none border border-brand-border focus:outline-none focus:border-brand-neon bg-brand-dark text-brand-text placeholder-zinc-500 font-mono"
             />
             {search && (
               <button 
@@ -143,14 +143,14 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
             <select
               value={selectedDifficulty}
               onChange={(e) => setSelectedDifficulty(e.target.value as any)}
-              className="w-full text-xs pl-3.5 pr-8 py-2.5 rounded-none border border-brand-border focus:outline-none focus:border-brand-neon bg-brand-dark text-zinc-300 appearance-none font-mono cursor-pointer"
+              className="w-full text-xs pl-3.5 pr-8 py-2.5 rounded-none border border-brand-border focus:outline-none focus:border-brand-neon bg-brand-dark text-brand-text appearance-none font-mono cursor-pointer"
             >
               <option value="All">TẤT CẢ ĐỘ KHÓ</option>
               <option value="Easy">EASY (DỄ)</option>
               <option value="Medium">MEDIUM (TRUNG BÌNH)</option>
               <option value="Hard">HARD (KHÓ)</option>
             </select>
-            <div className="absolute right-3.5 top-3.5 pointer-events-none text-zinc-550">
+            <div className="absolute right-3.5 top-3.5 pointer-events-none text-brand-text-muted/65">
               <Filter className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -160,14 +160,14 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value as any)}
-              className="w-full text-xs pl-3.5 pr-8 py-2.5 rounded-none border border-brand-border focus:outline-none focus:border-brand-neon bg-brand-dark text-zinc-300 appearance-none font-mono cursor-pointer"
+              className="w-full text-xs pl-3.5 pr-8 py-2.5 rounded-none border border-brand-border focus:outline-none focus:border-brand-neon bg-brand-dark text-brand-text appearance-none font-mono cursor-pointer"
             >
               <option value="All">TẤT CẢ TRẠNG THÁI</option>
               <option value="Todo">CHƯA LÀM (TODO)</option>
               <option value="In Progress">ĐANG GIẢI</option>
               <option value="Solved">ĐÃ HOÀN THÀNH</option>
             </select>
-            <div className="absolute right-3.5 top-3.5 pointer-events-none text-zinc-550">
+            <div className="absolute right-3.5 top-3.5 pointer-events-none text-brand-text-muted/65">
               <Filter className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -177,14 +177,14 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
             <select
               value={selectedTag}
               onChange={(e) => setSelectedTag(e.target.value)}
-              className="w-full text-xs pl-3.5 pr-8 py-2.5 rounded-none border border-brand-border focus:outline-none focus:border-brand-neon bg-brand-dark text-zinc-300 appearance-none font-mono cursor-pointer"
+              className="w-full text-xs pl-3.5 pr-8 py-2.5 rounded-none border border-brand-border focus:outline-none focus:border-brand-neon bg-brand-dark text-brand-text appearance-none font-mono cursor-pointer"
             >
               <option value="All">🏷️ CHỦ ĐỀ: TẤT CẢ</option>
               {allTags.map((tag) => (
                 <option key={tag} value={tag}>{tag.toUpperCase()}</option>
               ))}
             </select>
-            <div className="absolute right-3.5 top-3.5 pointer-events-none text-zinc-550">
+            <div className="absolute right-3.5 top-3.5 pointer-events-none text-brand-text-muted/65">
               <Filter className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -192,12 +192,12 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
       </div>
 
       {/* Problems List Grid Table views */}
-      <div className="bg-brand-panel border border-brand-border rounded-none overflow-hidden shadow-[4px_4px_0px_#000000]" id="problems-table">
+      <div className="bg-brand-panel border border-brand-border rounded-none overflow-hidden shadow-[4px_4px_0px_var(--color-brand-border-val)]" id="problems-table">
         {filteredProblems.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left">
               <thead>
-                <tr className="bg-brand-dark border-b border-brand-border text-[10px] font-black text-zinc-500 select-none uppercase tracking-widest font-mono">
+                <tr className="bg-brand-dark border-b border-brand-border text-[10px] font-black text-brand-text-muted/80 select-none uppercase tracking-widest font-mono">
                   <th className="py-4 px-6 w-24">MÃ SỐ</th>
                   <th className="py-4 px-4 min-w-[200px]">TÊN BÀI ÔN LUYỆN</th>
                   <th className="py-4 px-4 w-32 text-center">ĐỘ KHÓ</th>
@@ -206,7 +206,7 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
                   <th className="py-4 px-6 w-32 text-right">ÔN LUYỆN</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-brand-border text-xs text-zinc-350">
+              <tbody className="divide-y divide-brand-border text-xs text-brand-text">
                 {filteredProblems.map((prob) => {
                   return (
                     <tr 
@@ -214,25 +214,25 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
                       className="hover:bg-brand-dark/50 transition-colors group"
                     >
                       {/* ID with status marker */}
-                      <td className="py-4 px-6 font-bold font-mono text-zinc-450">
+                      <td className="py-4 px-6 font-bold font-mono text-brand-text-muted">
                         <div className="flex items-center gap-2">
                           {prob.status === 'Solved' ? (
-                            <CheckCircle2 className="w-4 h-4 text-[#00FF66] shrink-0" title="Đã giải xong" />
+                            <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0" title="Đã giải xong" />
                           ) : prob.status === 'In Progress' ? (
-                            <RefreshCw className="w-4 h-4 text-[#FFCC00] shrink-0 stroke-[2.5px] animate-spin" title="Đang ôn giải" />
+                            <RefreshCw className="w-4 h-4 text-amber-500 dark:text-amber-400 shrink-0 stroke-[2.5px] animate-spin" title="Đang ôn giải" />
                           ) : (
-                            <Circle className="w-4 h-4 text-zinc-700 shrink-0" title="Chưa làm" />
+                            <Circle className="w-4 h-4 text-brand-text-muted/40 shrink-0" title="Chưa làm" />
                           )}
                           <span>#{prob.id}</span>
                         </div>
                       </td>
 
                       {/* Title */}
-                      <td className="py-4 px-4 text-white">
+                      <td className="py-4 px-4 text-brand-text">
                         <div className="flex items-center gap-2 flex-wrap">
                           <button
                             onClick={() => onSelectProblem(prob)}
-                            className="hover:text-brand-neon hover:underline text-left leading-normal font-extrabold uppercase tracking-tight"
+                            className="hover:text-brand-neon hover:underline text-left leading-normal font-extrabold uppercase tracking-tight cursor-pointer"
                           >
                             {prob.title}
                           </button>
@@ -259,9 +259,9 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
                       {/* Difficulty pill */}
                       <td className="py-4 px-4 text-center">
                         <span className={`inline-block text-[9px] font-mono font-black tracking-wider px-2 py-0.5 border ${
-                          prob.difficulty === 'Easy' ? 'bg-[#00FF66]/10 text-[#00FF66] border-[#00FF66]/20' :
-                          prob.difficulty === 'Medium' ? 'bg-[#FFCC00]/10 text-[#FFCC00] border-[#FFCC00]/20' :
-                          'bg-[#FF3366]/10 text-[#FF3366] border-[#FF3366]/20'
+                          prob.difficulty === 'Easy' ? 'bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border-emerald-500/20' :
+                          prob.difficulty === 'Medium' ? 'bg-amber-500/10 text-amber-500 dark:text-amber-400 border-amber-500/20' :
+                          'bg-red-500/10 text-red-500 dark:text-red-400 border-red-500/20'
                         }`}>
                           {prob.difficulty.toUpperCase()}
                         </span>
@@ -274,19 +274,19 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
                             prob.tags.slice(0, 3).map((tag, idx) => (
                               <span 
                                 key={idx}
-                                className="text-[9.5px] font-mono bg-[#111] text-zinc-500 px-2 py-0.5 border border-brand-border max-w-[110px] truncate"
+                                className="text-[9.5px] font-mono bg-brand-dark text-brand-text-muted/80 px-2 py-0.5 border border-brand-border max-w-[110px] truncate"
                               >
                                 //{tag.toLowerCase()}
                               </span>
                             ))
                           ) : (
-                            <span className="text-zinc-750">-</span>
+                            <span className="text-brand-text-muted/50">-</span>
                           )}
                         </div>
                       </td>
 
                       {/* Solved count */}
-                      <td className="py-4 px-4 text-center font-mono text-zinc-500 font-bold">
+                      <td className="py-4 px-4 text-center font-mono text-brand-text-muted font-bold">
                         {prob.solvedCount || 0}x
                       </td>
 
@@ -296,8 +296,8 @@ export default function ProblemList({ problems, onImportComplete, onSelectProble
                           onClick={() => onSelectProblem(prob)}
                           className={`px-3.5 py-1.5 rounded-none text-[10px] font-black uppercase tracking-wider flex items-center justify-center gap-1 ml-auto transition-all cursor-pointer ${
                             prob.status === 'Solved' 
-                              ? 'bg-zinc-800 border border-brand-border hover:text-brand-neon hover:border-brand-neon text-zinc-400' 
-                              : 'bg-brand-neon text-black hover:bg-white border border-brand-neon'
+                              ? 'bg-brand-dark border border-brand-border hover:text-brand-neon hover:border-brand-neon text-brand-text-muted' 
+                              : 'bg-brand-neon text-brand-neon-text hover:bg-brand-text hover:text-brand-panel border border-brand-neon'
                           }`}
                         >
                           <Code2 className="w-3.5 h-3.5" />

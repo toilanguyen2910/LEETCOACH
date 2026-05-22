@@ -352,13 +352,13 @@ export default function Tutorial() {
   return (
     <div className="space-y-6" id="learning-tutorial-hub">
       {/* Intro Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between bg-brand-panel border border-brand-border p-6 shadow-[4px_4px_0_#000000] gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between bg-brand-panel border border-brand-border p-6 shadow-[4px_4px_0_var(--color-brand-border-val)] gap-4 transition-colors">
         <div>
-          <h2 className="text-sm font-black text-white flex items-center gap-2 uppercase tracking-widest">
+          <h2 className="text-sm font-black text-brand-text flex items-center gap-2 uppercase tracking-widest">
             <BookOpen className="w-5 h-5 text-brand-neon" />
             Nhập Môn Lập Trình Cho Người Mới // Coding Bootcamp
           </h2>
-          <p className="text-[11px] text-zinc-500 font-mono uppercase mt-1 leading-relaxed">
+          <p className="text-[11px] text-brand-text-muted font-mono uppercase mt-1 leading-relaxed">
             // Khóa học tinh lọc thực tế giúp học sinh/sinh viên mới bắt kịp tư duy gán biến, điều hướng, vòng lặp trước khi giải quyết LeetCode.
           </p>
         </div>
@@ -371,8 +371,8 @@ export default function Tutorial() {
               onClick={() => handleLanguageChange(lang)}
               className={`px-4 py-2 border font-bold text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
                 selectedLanguage === lang
-                  ? 'bg-brand-neon border-brand-neon text-black font-black'
-                  : 'border-brand-border text-zinc-400 hover:text-white bg-brand-dark'
+                  ? 'bg-brand-neon border-brand-neon text-brand-neon-text font-black'
+                  : 'border-brand-border text-brand-text-muted hover:text-brand-text bg-brand-dark'
               }`}
             >
               {lang}
@@ -385,17 +385,17 @@ export default function Tutorial() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         
         {/* LEFT COMPARTMENT: Lesson outline, descriptions, examples */}
-        <div className="lg:col-span-5 bg-brand-panel border border-brand-border flex flex-col justify-between h-[620px] shadow-[4px_4px_0_#000000] overflow-hidden">
+        <div className="lg:col-span-5 bg-brand-panel border border-brand-border flex flex-col justify-between h-[620px] shadow-[4px_4px_0_var(--color-brand-border-val)] overflow-hidden">
           
           {/* Header Progress */}
           <div className="p-4 border-b border-brand-border bg-brand-dark shrink-0 flex items-center justify-between">
-            <span className="text-[10px] font-mono text-zinc-400 uppercase font-bold">
+            <span className="text-[10px] font-mono text-brand-text-muted uppercase font-bold">
               Bài học {activeLessonIdx + 1} của {currentLessons.length}
             </span>
             
             <div className="flex items-center gap-2 select-none">
               <span className="text-[9.5px] font-mono font-bold text-brand-neon">{progressPercent}% HOÀN THÀNH</span>
-              <div className="w-20 bg-zinc-800 h-1.5 border border-brand-border rounded-none overflow-hidden">
+              <div className="w-20 bg-brand-dark h-1.5 border border-brand-border rounded-none overflow-hidden">
                 <div 
                   className="bg-brand-neon h-full transition-all duration-300"
                   style={{ width: `${progressPercent}%` }}
@@ -410,7 +410,7 @@ export default function Tutorial() {
             {/* Subject Title */}
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-[9px] bg-[#111] border border-brand-border p-1 text-zinc-500 font-mono font-black uppercase">
+                <span className="text-[9px] bg-brand-dark border border-brand-border p-1 text-brand-text-muted/60 font-mono font-black uppercase">
                   LESSON 0{activeLesson.id}
                 </span>
                 {completedLessons[selectedLanguage]?.includes(activeLesson.id) && (
@@ -419,10 +419,10 @@ export default function Tutorial() {
                   </span>
                 )}
               </div>
-              <h3 className="text-base font-black text-white uppercase italic tracking-tight mt-2.5">
+              <h3 className="text-base font-black text-brand-text uppercase italic tracking-tight mt-2.5">
                 {activeLesson.title}
               </h3>
-              <p className="text-[11px] text-zinc-400 font-mono mt-1 leading-relaxed">
+              <p className="text-[11px] text-brand-text-muted font-mono mt-1 leading-relaxed">
                 {activeLesson.description}
               </p>
             </div>
@@ -430,26 +430,26 @@ export default function Tutorial() {
             {/* In-depth Theory */}
             <div className="bg-brand-dark/95 border border-brand-border p-4 space-y-3">
               <h4 className="text-[10.5px] font-extrabold uppercase text-brand-neon font-mono tracking-widest">// 1. LÝ THUYẾT NỀN TẢNG</h4>
-              <div className="text-xs text-zinc-350 whitespace-pre-wrap leading-relaxed font-mono">
+              <div className="text-xs text-brand-text whitespace-pre-wrap leading-relaxed font-mono">
                 {activeLesson.explanation}
               </div>
             </div>
 
             {/* Code Syntax Visualizer */}
             <div className="space-y-2">
-              <h4 className="text-[10.5px] font-extrabold uppercase text-zinc-400 font-mono tracking-widest">// CÚ PHÁP ĐIỂN HÌNH:</h4>
-              <pre className="text-[11px] font-mono leading-relaxed bg-black/90 p-3 border border-brand-border text-brand-neon rounded-none overflow-x-auto">
+              <h4 className="text-[10.5px] font-extrabold uppercase text-brand-text-muted font-mono tracking-widest">// CÚ PHÁP ĐIỂN HÌNH:</h4>
+              <pre className="text-[11px] font-mono leading-relaxed bg-brand-code-bg p-3 border border-brand-border text-brand-neon rounded-none overflow-x-auto">
                 <code>{activeLesson.example}</code>
               </pre>
             </div>
 
             {/* Active Challenge Goal Instruction */}
-            <div className="bg-[#111] p-4.5 border border-[#444] rounded-none space-y-2">
-              <div className="flex items-center gap-1.5 text-white font-bold text-[11px] uppercase tracking-wider">
+            <div className="bg-brand-dark p-4.5 border border-brand-border rounded-none space-y-2">
+              <div className="flex items-center gap-1.5 text-brand-text font-bold text-[11px] uppercase tracking-wider">
                 <Trophy className="w-4 h-4 text-brand-neon shrink-0 animate-bounce" />
                 <span>Nhiệm vụ của bạn</span>
               </div>
-              <div className="text-xs text-zinc-300 leading-relaxed font-mono whitespace-pre-wrap">
+              <div className="text-xs text-brand-text-muted leading-relaxed font-mono whitespace-pre-wrap">
                 {activeLesson.exercise}
               </div>
             </div>
@@ -461,7 +461,7 @@ export default function Tutorial() {
             <button
               onClick={prevLesson}
               disabled={activeLessonIdx === 0}
-              className="px-3 py-1.5 bg-[#111] hover:bg-zinc-800 disabled:opacity-30 border border-brand-border text-xs text-zinc-350 cursor-pointer font-bold font-mono uppercase tracking-wider flex items-center gap-1 transition-colors hover:text-brand-neon"
+              className="px-3 py-1.5 bg-brand-dark hover:bg-brand-panel disabled:opacity-30 border border-brand-border text-xs text-brand-text cursor-pointer font-bold font-mono uppercase tracking-wider flex items-center gap-1 transition-colors hover:text-brand-neon"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>TRƯỚC</span>
@@ -472,12 +472,12 @@ export default function Tutorial() {
                 <button
                   key={les.id}
                   onClick={() => setActiveLessonIdx(i)}
-                  className={`w-5 h-5 rounded-none border text-[9px] font-mono text-center font-bold transition-all ${
+                  className={`w-5 h-5 rounded-none border text-[9px] font-mono text-center font-bold transition-all cursor-pointer ${
                     i === activeLessonIdx
-                      ? 'bg-brand-neon border-brand-neon text-black'
+                      ? 'bg-brand-neon border-brand-neon text-brand-neon-text'
                       : completedLessons[selectedLanguage]?.includes(les.id)
                         ? 'bg-emerald-950 border-emerald-500/30 text-emerald-400'
-                        : 'bg-brand-panel border-brand-border text-zinc-500 hover:text-white'
+                        : 'bg-brand-panel border-brand-border text-brand-text-muted hover:text-brand-text'
                   }`}
                 >
                   {les.id}
@@ -488,7 +488,7 @@ export default function Tutorial() {
             <button
               onClick={nextLesson}
               disabled={activeLessonIdx === currentLessons.length - 1}
-              className="px-3 py-1.5 bg-[#111] hover:bg-zinc-800 disabled:opacity-30 border border-brand-border text-xs text-zinc-350 cursor-pointer font-bold font-mono uppercase tracking-wider flex items-center gap-1 transition-colors hover:text-brand-neon"
+              className="px-3 py-1.5 bg-brand-dark hover:bg-brand-panel disabled:opacity-30 border border-brand-border text-xs text-brand-text cursor-pointer font-bold font-mono uppercase tracking-wider flex items-center gap-1 transition-colors hover:text-brand-neon"
             >
               <span>SAU</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -498,20 +498,20 @@ export default function Tutorial() {
         </div>
 
         {/* RIGHT COMPARTMENT: Live sandbox editor & terminal verification */}
-        <div className="lg:col-span-7 bg-brand-panel border border-brand-border flex flex-col justify-between h-[620px] shadow-[4px_4px_0_#000000] overflow-hidden">
+        <div className="lg:col-span-7 bg-brand-panel border border-brand-border flex flex-col justify-between h-[620px] shadow-[4px_4px_0_var(--color-brand-border-val)] overflow-hidden">
           
           {/* Header Info */}
-          <div className="bg-brand-dark px-5 py-3 border-b border-brand-border flex items-center justify-between select-none shrink-0 text-white text-xs font-mono">
-            <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-zinc-400">
+          <div className="bg-brand-dark px-5 py-3 border-b border-brand-border flex items-center justify-between select-none shrink-0 text-brand-text text-xs font-mono">
+            <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-brand-text-muted">
               <Terminal className="w-4 h-4 text-brand-neon" />
               <span>Interactive Sandbox // Thử Nghiệm Tức Thì</span>
             </div>
           </div>
 
           {/* Input text-area editor */}
-          <div className="flex-1 bg-black p-4 font-mono text-xs flex relative min-h-0">
+          <div className="flex-1 bg-brand-code-bg p-4 font-mono text-xs flex relative min-h-0">
             {/* Static line numbering spacer */}
-            <div className="w-8 border-r border-[#222] select-none text-[9.5px] pr-2.5 text-zinc-600 font-mono text-right space-y-1 py-1 block opacity-60">
+            <div className="w-8 border-r border-brand-border/40 select-none text-[9.5px] pr-2.5 text-brand-text-muted/60 font-mono text-right space-y-1 py-1 block opacity-60">
               {Array.from({ length: 15 }).map((_, i) => (
                 <div key={i}>{i + 1}</div>
               ))}
@@ -519,50 +519,50 @@ export default function Tutorial() {
 
             <textarea
               value={userCode}
-              onChange={(e) => setUserCode(e.target.value)}
+              onChange={(setUserCode)}
               placeholder="// Lập trình mã hàm giải thuật dựa theo hướng dẫn nhiệm vụ..."
-              className="flex-1 px-4 py-1 w-full h-full bg-transparent text-emerald-400 font-mono text-xs focus:outline-none resize-none leading-relaxed tracking-wide caret-brand-neon overflow-y-auto"
+              className="flex-1 px-4 py-1 w-full h-full bg-transparent text-brand-text font-mono text-xs focus:outline-none resize-none leading-relaxed tracking-wide caret-brand-neon overflow-y-auto"
             />
           </div>
 
           {/* Verification output drawer */}
-          <div className="bg-brand-dark border-t border-brand-border h-40 shrink-0 flex flex-col p-4 space-y-3 bg-[#0a0a0a]">
+          <div className="bg-brand-dark border-t border-brand-border h-40 shrink-0 flex flex-col p-4 space-y-3">
             
             {/* Verification menu header */}
             <div className="flex items-center justify-between border-b border-brand-border pb-2 shrink-0 select-none">
-              <span className="text-[10px] uppercase font-bold font-mono text-zinc-500 tracking-wider">
+              <span className="text-[10px] uppercase font-bold font-mono text-brand-text-muted/60 tracking-wider">
                 Kết Quả Biên Dịch & Kiểm Thử
               </span>
 
               <button
                 onClick={handleRunVerify}
-                className="bg-brand-neon text-black font-black text-[10.5px] uppercase tracking-wider px-4 py-1.5 rounded-none transition-all flex items-center gap-1.5 cursor-pointer hover:bg-white shrink-0 shadow-[2px_2px_0_#000]"
+                className="bg-brand-neon text-brand-neon-text font-black text-[10.5px] uppercase tracking-wider px-4 py-1.5 rounded-none transition-all flex items-center gap-1.5 cursor-pointer hover:bg-brand-text hover:text-brand-panel shrink-0 border border-brand-neon shadow-[2px_2px_0_var(--color-brand-border-val)]"
               >
-                <Play className="w-3.5 h-3.5 text-black" />
+                <Play className="w-3.5 h-3.5 text-brand-neon-text" />
                 <span>Chạy kiểm thử</span>
               </button>
             </div>
 
             {/* Run Logs display */}
-            <div className="flex-1 bg-black p-3.5 font-mono text-[10.5px] overflow-y-auto rounded-none border border-brand-border flex flex-col justify-between">
+            <div className="flex-1 bg-brand-code-bg p-3.5 font-mono text-[10.5px] overflow-y-auto rounded-none border border-brand-border flex flex-col justify-between">
               <div>
                 <span className={`font-black uppercase tracking-wider text-[9px] mr-1.5 ${
-                  validationResult.status === 'success' ? 'text-emerald-450 text-[#00FF66]' :
-                  validationResult.status === 'failed' ? 'text-red-400' :
-                  'text-zinc-500'
+                  validationResult.status === 'success' ? 'text-emerald-500 dark:text-emerald-400' :
+                  validationResult.status === 'failed' ? 'text-red-500 dark:text-red-400' :
+                  'text-brand-text-muted'
                 }`}>
                   {validationResult.status === 'success' ? '● THÀNH CÔNG:' :
                    validationResult.status === 'failed' ? '● CẤU TRÚC LỖI:' :
                    '● TRẠNG THÁI:'}
                 </span>
-                <span className="text-zinc-300 leading-relaxed">
+                <span className="text-brand-text leading-relaxed">
                   {validationResult.message}
                 </span>
               </div>
 
               {validationResult.output && (
-                <div className="mt-2 text-[9.5px] bg-brand-dark/40 border-t border-brand-border p-1 text-zinc-500 uppercase tracking-wide">
-                  // KẾT QUẢ ĐẦU RA / RETURN VALUE: <span className="font-bold text-white lowercase">{validationResult.output}</span>
+                <div className="mt-2 text-[9.5px] bg-brand-dark/40 border-t border-brand-border p-1 text-brand-text-muted uppercase tracking-wide">
+                  // KẾT QUẢ ĐẦU RA / RETURN VALUE: <span className="font-bold text-brand-text lowercase">{validationResult.output}</span>
                 </div>
               )}
             </div>
@@ -575,10 +575,10 @@ export default function Tutorial() {
 
       {/* Graduation Reward Box (Full Completed Celebrations) */}
       {doneCount === currentLessons.length && (
-        <div className="bg-gradient-to-r from-emerald-950/40 to-brand-panel border-2 border-emerald-500/40 p-6 shadow-[4px_4px_0_#000000] text-center space-y-3 rounded-none animate-bounce">
+        <div className="bg-gradient-to-r from-emerald-950/20 to-brand-panel border-2 border-emerald-500/30 p-6 shadow-[4px_4px_0_var(--color-brand-border-val)] text-center space-y-3 rounded-none animate-bounce">
           <Award className="w-12 h-12 text-brand-neon mx-auto animate-pulse" />
-          <h3 className="text-sm font-black text-white uppercase tracking-wider">Chúc Mừng Bạn Đã Tốt Nghiệp Khóa Học Nhập Môn!</h3>
-          <p className="text-zinc-300 text-xs font-mono max-w-lg mx-auto">
+          <h3 className="text-sm font-black text-brand-text uppercase tracking-wider">Chúc Mừng Bạn Đã Tốt Nghiệp Khóa Học Nhập Môn!</h3>
+          <p className="text-brand-text-muted text-xs font-mono max-w-lg mx-auto">
             Bạn đã xuất sắc hoàn thành trọn vẹn lớp huấn luyện rèn luyện dẻo dai cơ bản ({doneCount}/{currentLessons.length} bài thành công). Bạn đã đủ phong độ tự tin để bắt đầu thực chiến các bài tập LeetCode thực tế ở tab "Kho Bài Tập LeetCode" rồi đó!
           </p>
         </div>

@@ -80,14 +80,14 @@ export default function ContributionGrid({ problems, activityLogs, streakDays, m
       {/* Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {/* Total stats card */}
-        <div className="bg-brand-panel p-5 rounded-none border border-brand-border shadow-[3px_3px_0_#000] flex items-center gap-4">
+        <div className="bg-brand-panel p-5 rounded-none border border-brand-border shadow-[3px_3px_0_var(--color-brand-border-val)] flex items-center gap-4 transition-colors duration-200">
           <div className="w-11 h-11 bg-brand-dark border border-brand-border-light flex items-center justify-center shrink-0">
             <Trophy className="w-5.5 h-5.5 text-brand-neon" />
           </div>
           <div className="min-w-0">
-            <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">// Học lực tổng quát</p>
-            <p className="text-xl font-black text-white mt-0.5">
-              {solvedCount} <span className="text-xs text-zinc-500 font-bold">/ {total} bài</span>
+            <p className="text-[10px] text-brand-text-muted font-bold uppercase tracking-wider">// Học lực tổng quát</p>
+            <p className="text-xl font-black text-brand-text mt-0.5">
+              {solvedCount} <span className="text-xs text-brand-text-muted font-bold">/ {total} bài</span>
             </p>
             <div className="w-24 bg-brand-dark h-1 border border-brand-border mt-1.5 overflow-hidden">
               <div 
@@ -100,61 +100,61 @@ export default function ContributionGrid({ problems, activityLogs, streakDays, m
         </div>
 
         {/* Streaks Card */}
-        <div className="bg-brand-panel p-5 rounded-none border border-brand-border shadow-[3px_3px_0_#000] flex items-center gap-4">
+        <div className="bg-brand-panel p-5 rounded-none border border-brand-border shadow-[3px_3px_0_var(--color-brand-border-val)] flex items-center gap-4 transition-colors duration-200">
           <div className="w-11 h-11 bg-brand-dark border border-brand-border-light flex items-center justify-center shrink-0">
             <Flame className="w-5.5 h-5.5 text-brand-neon animate-pulse" />
           </div>
           <div className="min-w-0">
-            <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">// Luyện thuật toán</p>
-            <p className="text-xl font-black text-white mt-0.5">
-              {streakDays} <span className="text-xs text-zinc-500 font-mono">gün</span>
+            <p className="text-[10px] text-brand-text-muted font-bold uppercase tracking-wider">// Luyện thuật toán</p>
+            <p className="text-xl font-black text-brand-text mt-0.5">
+              {streakDays} <span className="text-xs text-brand-text-muted font-mono">ngày</span>
             </p>
-            <p className="text-[9px] text-zinc-400 font-mono mt-1 uppercase tracking-tight">
+            <p className="text-[9px] text-brand-text-muted/80 font-mono mt-1 uppercase tracking-tight">
               Kỷ lục cao nhất: <span className="text-brand-neon font-bold">{maxStreak} ngày</span>
             </p>
           </div>
         </div>
 
         {/* Difficulty Easy + Medium progress */}
-        <div className="bg-brand-panel p-5 rounded-none border border-brand-border shadow-[3px_3px_0_#000] col-span-1 md:col-span-2">
-          <h4 className="text-[10px] font-black uppercase text-[#666] tracking-widest mb-3">// Tiến độ theo độ khó</h4>
+        <div className="bg-brand-panel p-5 rounded-none border border-brand-border shadow-[3px_3px_0_var(--color-brand-border-val)] col-span-1 md:col-span-2 transition-colors duration-200">
+          <h4 className="text-[10px] font-black uppercase text-brand-text-muted/70 tracking-widest mb-3">// Tiến độ theo độ khó</h4>
           <div className="space-y-2.5">
             {/* Easy Bar */}
             <div>
               <div className="flex justify-between items-center text-[10px] font-mono mb-1">
-                <span className="font-bold text-emerald-400 flex items-center gap-1">
+                <span className="font-bold text-emerald-500 dark:text-emerald-400 flex items-center gap-1">
                   🟢 EASY (DỄ)
                 </span>
-                <span className="text-zinc-400 font-bold">{easySolved}/{easyTotal} ({getPercent(easySolved, easyTotal)}%)</span>
+                <span className="text-brand-text-muted font-bold">{easySolved}/{easyTotal} ({getPercent(easySolved, easyTotal)}%)</span>
               </div>
               <div className="w-full bg-brand-dark h-1 border border-brand-border overflow-hidden">
-                <div className="bg-emerald-400 h-full transition-all duration-300" style={{ width: `${getPercent(easySolved, easyTotal)}%` }}></div>
+                <div className="bg-emerald-500 h-full transition-all duration-300" style={{ width: `${getPercent(easySolved, easyTotal)}%` }}></div>
               </div>
             </div>
 
             {/* Medium Bar */}
             <div>
               <div className="flex justify-between items-center text-[10px] font-mono mb-1">
-                <span className="font-bold text-amber-400 flex items-center gap-1">
+                <span className="font-bold text-amber-500 dark:text-amber-400 flex items-center gap-1">
                   🟡 MEDIUM (TRUNG BÌNH)
                 </span>
-                <span className="text-zinc-400 font-bold">{mediumSolved}/{mediumTotal} ({getPercent(mediumSolved, mediumTotal)}%)</span>
+                <span className="text-brand-text-muted font-bold">{mediumSolved}/{mediumTotal} ({getPercent(mediumSolved, mediumTotal)}%)</span>
               </div>
               <div className="w-full bg-brand-dark h-1 border border-brand-border overflow-hidden">
-                <div className="bg-amber-400 h-full transition-all duration-300" style={{ width: `${getPercent(mediumSolved, mediumTotal)}%` }}></div>
+                <div className="bg-amber-500 h-full transition-all duration-300" style={{ width: `${getPercent(mediumSolved, mediumTotal)}%` }}></div>
               </div>
             </div>
 
             {/* Hard Bar */}
             <div>
               <div className="flex justify-between items-center text-[10px] font-mono mb-1">
-                <span className="font-bold text-red-400 flex items-center gap-1">
+                <span className="font-bold text-red-500 dark:text-red-400 flex items-center gap-1">
                   🔴 HARD (KHÓ)
                 </span>
-                <span className="text-zinc-400 font-bold">{hardSolved}/{hardTotal} ({getPercent(hardSolved, hardTotal)}%)</span>
+                <span className="text-brand-text-muted font-bold">{hardSolved}/{hardTotal} ({getPercent(hardSolved, hardTotal)}%)</span>
               </div>
               <div className="w-full bg-brand-dark h-1 border border-brand-border overflow-hidden">
-                <div className="bg-red-400 h-full transition-all duration-300" style={{ width: `${getPercent(hardSolved, hardTotal)}%` }}></div>
+                <div className="bg-red-500 h-full transition-all duration-300" style={{ width: `${getPercent(hardSolved, hardTotal)}%` }}></div>
               </div>
             </div>
           </div>
@@ -162,19 +162,19 @@ export default function ContributionGrid({ problems, activityLogs, streakDays, m
       </div>
 
       {/* Contribution Calendar Heatmap card */}
-      <div className="bg-brand-panel p-6 rounded-none border border-brand-border shadow-[3px_3px_0_#000]" id="activity-heatmap">
+      <div className="bg-brand-panel p-6 rounded-none border border-brand-border shadow-[3px_3px_0_var(--color-brand-border-val)] transition-colors duration-200" id="activity-heatmap">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b border-brand-border pb-3.5">
           <div>
-            <h3 className="text-xs font-black text-white uppercase tracking-widest flex items-center gap-1.5 leading-none">
+            <h3 className="text-xs font-black text-brand-text uppercase tracking-widest flex items-center gap-1.5 leading-none">
               <Target className="w-4 h-4 text-brand-neon" />
               Lịch Luyện Code // 150 Ngày Qua
             </h3>
-            <p className="text-[10px] text-zinc-500 mt-1 uppercase font-mono tracking-tight leading-none">
+            <p className="text-[10px] text-brand-text-muted mt-1 uppercase font-mono tracking-tight leading-none">
               Khối lượng rèn luyện thuật toán hàng ngày dựa trên tổng số bài đã nộp.
             </p>
           </div>
           
-          <div className="flex items-center gap-1 text-[10.5px] font-mono text-zinc-500">
+          <div className="flex items-center gap-1 text-[10.5px] font-mono text-brand-text-muted/80">
             <span className="mr-1">KHÔ KHAN</span>
             <span className="w-3.5 h-3.5 bg-brand-dark/80 border border-brand-border"></span>
             <span className="w-3.5 h-3.5 bg-brand-neon/30 border border-brand-neon/10"></span>
@@ -188,7 +188,7 @@ export default function ContributionGrid({ problems, activityLogs, streakDays, m
         <div className="flex flex-col overflow-x-auto select-none pt-2 scrollbar-none">
           <div className="flex gap-[4px] min-w-[700px] pb-1">
             {/* Days indicator column */}
-            <div className="flex flex-col justify-between text-[9px] text-[#666] font-mono pr-2 pb-4 leading-none h-[120px] w-6 shrink-0 pt-0.5 font-bold uppercase">
+            <div className="flex flex-col justify-between text-[9px] text-brand-text-muted/65 font-mono pr-2 pb-4 leading-none h-[120px] w-6 shrink-0 pt-0.5 font-bold uppercase">
               <span>CN</span>
               <span>T2</span>
               <span>T4</span>
@@ -209,7 +209,7 @@ export default function ContributionGrid({ problems, activityLogs, streakDays, m
           </div>
           
           {/* Months indicator row */}
-          <div className="flex pl-10 text-[9px] font-mono text-[#555] justify-between pr-4 mt-2 leading-none font-bold uppercase tracking-widest">
+          <div className="flex pl-10 text-[9px] font-mono text-brand-text-muted/60 justify-between pr-4 mt-2 leading-none font-bold uppercase tracking-widest">
             <span>4 tháng trước</span>
             <span>3 tháng trước</span>
             <span>2 tháng trước</span>

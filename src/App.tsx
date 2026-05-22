@@ -16,6 +16,20 @@ import Tutorial from './components/Tutorial';
 import { Activity, CircleCheck, Info, Flame, Trophy } from 'lucide-react';
 
 export default function App() {
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    const saved = localStorage.getItem('leetcode_theme');
+    return (saved as 'dark' | 'light') || 'dark';
+  });
+
+  useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+    localStorage.setItem('leetcode_theme', theme);
+  }, [theme]);
+
   const [activeTab, setActiveTab] = useState<string>('dashboard');
   const [problems, setProblems] = useState<LeetCodeProblem[]>([]);
   const [activityLogs, setActivityLogs] = useState<DailyActivity[]>([]);
@@ -312,13 +326,15 @@ export default function App() {
   const solvedCount = problems.filter(p => p.status === 'Solved').length;
 
   return (
-    <div className="flex h-screen bg-brand-bg font-sans text-[#E0E0E0] overflow-hidden" id="dashboard-app-frame">
+    <div className="flex h-screen bg-brand-bg font-sans text-brand-text overflow-hidden transition-colors duration-200" id="dashboard-app-frame">
       {/* Sidebar navigation control */}
       <Sidebar 
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
         streakDays={streakDays}
         solvedCount={solvedCount}
+        theme={theme}
+        setTheme={setTheme}
       />
 
       {/* Main content body panel */}

@@ -307,15 +307,15 @@ export default function Playground({ problem, onUpdateProblem, onAddActivityLog 
               <div className="flex justify-between items-start gap-4">
                 <div>
                   <span className="text-[9px] bg-brand-dark text-zinc-500 px-2.5 py-0.5 border border-brand-border font-mono font-bold uppercase">
-                    Bài #{problem.id}
+                  Bài #{problem.id}
                   </span>
-                  <h3 className="text-base font-black text-white mt-2 uppercase italic tracking-tight">{problem.title}</h3>
+                  <h3 className="text-base font-black text-brand-text mt-2 uppercase italic tracking-tight">{problem.title}</h3>
                 </div>
                 
                 <span className={`text-[9px] font-mono font-black px-2 py-0.5 border uppercase ${
-                  problem.difficulty === 'Easy' ? 'bg-[#00FF66]/10 text-[#00FF66] border-[#00FF66]/20' :
-                  problem.difficulty === 'Medium' ? 'bg-[#FFCC00]/10 text-[#FFCC00] border-[#FFCC00]/20' :
-                  'bg-[#FF3366]/10 text-[#FF3366] border-[#FF3366]/20'
+                  problem.difficulty === 'Easy' ? 'bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border-emerald-500/20' :
+                  problem.difficulty === 'Medium' ? 'bg-amber-500/10 text-amber-500 dark:text-amber-400 border-amber-500/20' :
+                  'bg-red-500/10 text-red-500 dark:text-red-400 border-red-500/20'
                 }`}>
                   {problem.difficulty}
                 </span>
@@ -324,14 +324,14 @@ export default function Playground({ problem, onUpdateProblem, onAddActivityLog 
               {/* Tag elements */}
               <div className="flex flex-wrap gap-1">
                 {problem.tags?.map((tag, i) => (
-                  <span key={i} className="text-[9px] font-mono bg-[#111] text-zinc-500 px-2 py-0.5 border border-brand-border">
+                  <span key={i} className="text-[9px] font-mono bg-brand-dark text-brand-text-muted/80 px-2 py-0.5 border border-brand-border">
                     //{tag.toLowerCase()}
                   </span>
                 ))}
               </div>
 
               {/* Plain/Markdown Description */}
-              <div className="text-xs text-zinc-300 leading-relaxed whitespace-pre-wrap font-mono p-4 border border-brand-border bg-brand-dark/80 rounded-none">
+              <div className="text-xs text-brand-text leading-relaxed whitespace-pre-wrap font-mono p-4 border border-brand-border bg-brand-dark hover:scale-[1.002] transition-transform duration-200 rounded-none">
                 {problem.description}
               </div>
 
@@ -522,29 +522,29 @@ export default function Playground({ problem, onUpdateProblem, onAddActivityLog 
       <div className="xl:col-span-7 flex flex-col bg-brand-panel overflow-hidden shadow-[4px_4px_0px_#000000] h-[650px] border border-brand-border rounded-none">
         
         {/* Editor Settings row */}
-        <div className="bg-brand-dark px-5 py-3.5 border-b border-brand-border/60 flex items-center justify-between select-none shrink-0 text-white text-xs font-mono">
+        <div className="bg-brand-dark px-5 py-3.5 border-b border-brand-border/60 flex items-center justify-between select-none shrink-0 text-brand-text text-xs font-mono">
           <div className="flex items-center gap-4 font-bold uppercase tracking-wider">
             <span className="w-2.5 h-2.5 rounded-none bg-brand-neon animate-pulse"></span>
             <span>Online Terminal // LeetCoach IDE v1.0.0</span>
           </div>
 
           {/* Stopwatch widget */}
-          <div className="hidden md:flex items-center gap-2 bg-[#0a0a0a] border border-brand-border px-3 py-1.5 font-mono text-[11px] shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00FF66] animate-pulse shrink-0" />
-            <span className="text-zinc-550 font-extrabold text-[9px] uppercase tracking-widest leading-none">STOPWATCH:</span>
+          <div className="hidden md:flex items-center gap-2 bg-brand-dark/85 border border-brand-border px-3 py-1.5 font-mono text-[11px] shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse shrink-0" />
+            <span className="text-brand-text-muted/60 font-extrabold text-[9px] uppercase tracking-widest leading-none">STOPWATCH:</span>
             <span className="font-extrabold text-[#00FF66] tracking-mono text-[11px] leading-none">{formatStopwatch(stopwatchSeconds)}</span>
             
             <div className="flex gap-1 ml-1.5">
               <button
                 onClick={() => setIsStopwatchRunning(!isStopwatchRunning)}
-                className="px-1 py-0.5 text-[8.5px] uppercase border border-zinc-800 hover:border-brand-neon bg-brand-panel text-zinc-400 hover:text-brand-neon transition-all cursor-pointer font-black leading-none rounded-none"
+                className="px-1 py-0.5 text-[8.5px] uppercase border border-brand-border/40 hover:border-brand-neon bg-brand-panel text-brand-text-muted hover:text-brand-neon transition-all cursor-pointer font-black leading-none rounded-none"
                 title={isStopwatchRunning ? "Pause timer" : "Resume timer"}
               >
                 {isStopwatchRunning ? 'PAUSE' : 'RUN'}
               </button>
               <button
                 onClick={() => setStopwatchSeconds(0)}
-                className="px-1 py-0.5 text-[8.5px] uppercase border border-zinc-800 hover:border-red-500 bg-brand-panel text-zinc-400 hover:text-red-500 transition-all cursor-pointer font-black leading-none rounded-none"
+                className="px-1 py-0.5 text-[8.5px] uppercase border border-brand-border/40 hover:border-red-500 bg-brand-panel text-brand-text-muted hover:text-red-500 transition-all cursor-pointer font-black leading-none rounded-none"
                 title="Reset timer"
               >
                 RESET
@@ -560,7 +560,7 @@ export default function Playground({ problem, onUpdateProblem, onAddActivityLog 
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
-              className="bg-brand-panel border border-brand-border text-zinc-400 outline-none leading-none rounded-none p-1 text-[9.5px] font-mono hover:text-white cursor-pointer"
+              className="bg-brand-panel border border-brand-border text-brand-text-muted/80 outline-none leading-none rounded-none p-1 text-[9.5px] font-mono hover:text-brand-text cursor-pointer"
             >
               <option value="TypeScript">TypeScript</option>
               <option value="JavaScript">JavaScript</option>
@@ -574,9 +574,9 @@ export default function Playground({ problem, onUpdateProblem, onAddActivityLog 
         <div className="flex-1 min-h-0 flex relative">
           
           {/* Mock Lines numbers bar */}
-          <div className="w-10 bg-[#050505] border-r border-brand-border/40 text-right pr-2 select-none text-[9.5px] py-4 text-zinc-600 font-mono space-y-[2px] block">
+          <div className="w-10 bg-brand-code-num-bg border-r border-brand-border/45 text-right pr-2 select-none text-[9.5px] py-4 text-brand-text-muted/60 font-mono space-y-[2px] block">
             {Array.from({ length: 30 }).map((_, idx) => (
-              <div key={idx} className="h-[18px] leading-[18px] opacity-40">{idx + 1}</div>
+              <div key={idx} className="h-[18px] leading-[18px] opacity-60">{idx + 1}</div>
             ))}
           </div>
 
@@ -599,7 +599,7 @@ export default function Playground({ problem, onUpdateProblem, onAddActivityLog 
               }
             }}
             placeholder="Viết code giải bài toán của bạn ở đây. Hãy bảo đảm tên phương thức khớp với khuôn mẫu..."
-            className="flex-1 w-full h-full p-4 bg-black text-zinc-300 font-mono text-xs focus:ring-0 focus:outline-none resize-none leading-[18px] tracking-wide placeholder-zinc-800 caret-brand-neon overflow-y-auto"
+            className="flex-1 w-full h-full p-4 bg-brand-code-bg text-brand-text font-mono text-xs focus:ring-0 focus:outline-none resize-none leading-[18px] tracking-wide placeholder-brand-text-muted/30 caret-brand-neon overflow-y-auto"
             id="code-editor-arena"
           />
         </div>
@@ -607,7 +607,7 @@ export default function Playground({ problem, onUpdateProblem, onAddActivityLog 
         {/* Bottom Interactive Terminal Display Drawer */}
         <div className="bg-brand-dark h-48 shrink-0 flex flex-col border-t border-brand-border select-none">
           <div className="bg-brand-dark border-b border-brand-border flex items-center justify-between px-5 py-2.5 shrink-0">
-            <span className="text-[9.5px] uppercase font-mono font-black tracking-widest text-[#999] flex items-center gap-1.5">
+            <span className="text-[9.5px] uppercase font-mono font-black tracking-widest text-brand-text-muted/80 flex items-center gap-1.5">
               <Terminal className="w-3.5 h-3.5 text-brand-neon" />
               Báo cáo Đầu ra Trình chạy Code (Console)
             </span>
@@ -615,34 +615,34 @@ export default function Playground({ problem, onUpdateProblem, onAddActivityLog 
             <div className="flex gap-2">
               <button
                 onClick={handleRunCode}
-                className="bg-[#111] hover:bg-zinc-800 border border-brand-border text-zinc-300 hover:border-brand-neon hover:text-brand-neon text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-none transition-colors duration-150 cursor-pointer"
+                className="bg-brand-dark hover:bg-brand-panel border border-brand-border text-brand-text hover:border-brand-neon hover:text-brand-neon text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-none transition-colors duration-150 cursor-pointer"
               >
                 Chạy thử nghiệm
               </button>
               
               <button
                 onClick={handleSubmitCode}
-                className="bg-brand-neon text-black font-black text-[10px] uppercase tracking-wider px-3.5 py-1.5 rounded-none transition-colors flex items-center gap-1.5 cursor-pointer hover:bg-white"
+                className="bg-brand-neon text-brand-neon-text font-black text-[10px] uppercase tracking-wider px-3.5 py-1.5 rounded-none transition-all flex items-center gap-1.5 cursor-pointer hover:bg-brand-text hover:text-brand-panel border border-brand-neon shadow-[2px_2px_0_var(--color-brand-border-val)]"
               >
-                <CheckCircle className="w-3.5 h-3.5 text-black" />
+                <CheckCircle className="w-3.5 h-3.5 text-brand-neon-text hover:text-brand-panel" />
                 Xác nhận nộp bài
               </button>
             </div>
           </div>
 
-          <div className="flex-1 bg-[#111] p-4.5 font-mono text-[10.5px] overflow-y-auto whitespace-pre-wrap leading-relaxed select-text border border-brand-border m-2">
+          <div className="flex-1 bg-brand-code-bg p-4.5 font-mono text-[10.5px] overflow-y-auto whitespace-pre-wrap leading-relaxed select-text border border-brand-border m-2">
             <span className={`inline-block mr-1.5 font-bold ${
-              terminalStatus === 'running' ? 'text-amber-400':
-              terminalStatus === 'success' ? 'text-emerald-450 text-[#00FF66]':
-              terminalStatus === 'error' ? 'text-red-400':
-              'text-zinc-600'
+              terminalStatus === 'running' ? 'text-amber-450':
+              terminalStatus === 'success' ? 'text-emerald-500 dark:text-emerald-400':
+              terminalStatus === 'error' ? 'text-red-500 dark:text-red-400':
+              'text-brand-text-muted/50'
             }`}>
               {terminalStatus === 'running' ? '● RUNNING' :
                terminalStatus === 'success' ? '● FINISHED' :
                terminalStatus === 'error' ? '● FAILED' :
                '● READY'}
             </span>
-            <span className="text-zinc-300">{terminalOutput}</span>
+            <span className="text-brand-text">{terminalOutput}</span>
           </div>
         </div>
 
